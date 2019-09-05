@@ -16,7 +16,7 @@ function setup() {
 
 //img = loadImage("assets/texture.png");
 
-  createCanvas(2000,2000, WEBGL);
+  createCanvas(1000,1000, WEBGL);
   ps = new ParticleSystem(0, createVector(90, 110), img);
 
 
@@ -25,6 +25,8 @@ function setup() {
 
 function draw() {
   background(145, 255, 175);
+
+  translate(-500,-500);
 
   fill(8,7,7);
   quad(356, 151, 526, 190, 487, 359, 389, 356);
