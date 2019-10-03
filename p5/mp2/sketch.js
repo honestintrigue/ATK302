@@ -1,16 +1,24 @@
 var myState=0;
 var timer=0;
-var myImage;
+var gif_loadImg, gif_createImg;
+
+function preload() {
+  gif_loadImg = loadImage("assets/gifboogie.gif");
+  gif_createImg = createImg("assets/gifboogie.gif");
+}
+
 
 function setup() {
   // put setup code here
-  createCanvas(800,800);
-  myImage=loadImage();
+  createCanvas(1000,1000);
+  background(0);
+  //myImage=loadImage();
 }
 
 function draw() {
   // put drawing code here
-
+  image(gif_loadImg, 50, 50);
+  gif_createImg.position(50, 350);
   switch(myState){
 
     case 0:
