@@ -30,17 +30,18 @@ function Car() {
   //methods
   this.xPos = 100;
 
-}
 
 
 
 
-this.display = function() {
 
-  rect(this.xPose = this.xPose + 1);
-}
+  this.display = function() {
 
-this.move = function() {
-  this.xPos = this.xPos + 1;
+    rect(this.xPose = this.xPose + 1);
+  }
 
+  this.move = function() {
+    this.xPos = this.xPos + 1;
+
+  }
 }
