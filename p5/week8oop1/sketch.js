@@ -37,7 +37,7 @@ function Car() {
 
   this.display = function() {
 
-    rect(this.xPose = this.xPose + 1);
+    rect(this.xPos,50,50,50);
   }
 
   this.move = function() {
