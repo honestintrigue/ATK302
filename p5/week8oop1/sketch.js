@@ -5,10 +5,10 @@ var myCar3;
 
 function setup() {
   // put setup code here
-  createCanvas(windowWidth,windowHeight);
+  createCanvas(windowWidth, windowHeight);
   myCar1 = new Car(); //spawn 1 car
   myCar2 = new Car();
-  myCar3= new Car();
+  myCar3 = new Car();
 }
 
 function draw() {
@@ -30,17 +30,17 @@ function Car() {
   //methods
   this.xPos = 100;
 
-  }
+}
 
 
 
 
-  this.display = function() {
+this.display = function() {
 
-    rect(this.xPose=this.xPose+1);
-  }
+  rect(this.xPose = this.xPose + 1);
+}
 
-  this.move = function() {
-    this.xPos = this.xPos + 1;
+this.move = function() {
+  this.xPos = this.xPos + 1;
 
-  }
+}
