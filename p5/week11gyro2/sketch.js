@@ -1,6 +1,3 @@
-/* For mobile phones - accesses accelerometer.
-Make sure you turn on orientation lock on your iPhone or Android device. */
-
 var alpha, beta, gamma; // orientation data
 var bunnyImage;
 var xPosition = 0;
@@ -8,12 +5,23 @@ var yPosition = 0;
 var x = 0; // acceleration data
 var y = 0;
 var z = 0;
+var frogPos;
+var cars = [];
+
+
 
 function setup() {
-
+  // put setup code here
   createCanvas(windowWidth, windowHeight);
 
-  // initialize accelerometer variables
+  for (var i = 0; i < 5; i++) {
+    cars.push(new Car());
+  }
+  frogPos = createVector(width / 2, height - 80);
+  rectMode(CENTER);
+  ellipseMode(CENTER);
+
+
   alpha = 0;
   beta = 0;
   gamma = 0;
@@ -25,12 +33,10 @@ function setup() {
 }
 
 function draw() {
+  // put drawing code here
+  background('#c6f5ff');
 
-  background('#c6f5ff'); // light blue
 
-  // the map command !!!!
-  // takes your variable and maps it from range 1 to range 2
-  // map(yourVar, range1_x, range1_y, range2_x, range2_y) ;
   xPosition = map(gamma, -60, 60, 0, width);
   yPosition = map(beta, -30, 30, 0, height);
 
@@ -43,6 +49,16 @@ function draw() {
   image(bunnyImage, 0, 0, 500, 500);
   //  	rect(0, 0, 100, 100) ;
   pop();
+
+  frogPos.x = xPosition;
+  frogPos.yPosition;
+  for (var i = 0; i < cars.length; i++) {
+    cars[i].display();
+    cars[i].drive();
+    if (cars[i].pos.dist(frogPos) < 50) {
+      cars.splice(i, 1);
+    }
+  }
 
 
   // DECORATIONS
@@ -70,7 +86,6 @@ function draw() {
   text("atk", width / 2, height / 2);
 
 }
-
 // HERE'S THE STUFF YOU NEED FOR READING IN DATA!!!
 
 // Read in accelerometer data
@@ -88,3 +103,31 @@ window.addEventListener('devicemotion', function(e) {
   y = e.acceleration.y;
   z = e.acceleration.z;
 });
+
+
+
+function Car() {
+  //attributes
+  //methods
+  this.pos = createVector(random(width), random(height));
+  this.vel = createVector(random(-3, 3), random(-3, 3));
+
+
+  this.display = function() {
+
+    rect(this.pos.x, this.pos.y, 50, 50);
+  }
+
+  this.drive = function() {
+    this.pos.add(this.vel);
+
+    if (this.pos.x > width) this.pos.x = 0;
+    if (this.pos.x < 0) this.pos.x = width;
+    if (this.pos.y > height) this.pos.y = 0;
+    if (this.pos.y < 0) this.pos.y = height;
+
+  }
+
+
+
+}
